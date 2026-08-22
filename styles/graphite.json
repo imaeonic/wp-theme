@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "title": "Graphite",
+  "styles": {
+    "color": {
+      "background": "#F4F4F1",
+      "text": "#16181C"
+    },
+    "elements": {
+      "heading": { "color": { "text": "#111317" } },
+      "link": { "color": { "text": "#005FCC" } },
+      "button": {
+        "color": {
+          "background": "#16181C",
+          "text": "#FFFFFF"
+        }
+      }
+    }
+  }
+}
