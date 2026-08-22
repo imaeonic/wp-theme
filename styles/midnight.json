@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "title": "Midnight",
+  "styles": {
+    "color": {
+      "background": "#071421",
+      "text": "#F7FAFC"
+    },
+    "elements": {
+      "heading": { "color": { "text": "#FFFFFF" } },
+      "link": { "color": { "text": "#52D7F6" } },
+      "button": {
+        "color": {
+          "background": "#00BDEB",
+          "text": "#071421"
+        }
+      }
+    }
+  }
+}
