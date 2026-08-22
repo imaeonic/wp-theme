@@ -12,30 +12,39 @@
 - [x] Optional WooCommerce support
 
 ## Premium pattern library
-- [ ] Multiple hero compositions
-- [ ] Client/proof layouts
-- [ ] Asymmetric project galleries
-- [ ] Case-study page sections
-- [ ] Architecture and topology visual sections
-- [ ] Metrics and outcome layouts
-- [ ] Process and timeline layouts
-- [ ] Service and industry layouts
-- [ ] Team/profile layouts
-- [ ] Testimonial variants
-- [ ] FAQ and Tabs layouts
-- [ ] Pricing/comparison sections
-- [ ] Contact/enquiry sections
-- [ ] Insight/article features
-- [ ] Header and footer variants
+- [x] Multiple hero compositions
+- [x] Client/proof layouts
+- [x] Asymmetric project galleries
+- [x] Case-study page sections
+- [x] Architecture and topology visual sections
+- [x] Metrics and outcome layouts
+- [x] Process and timeline layouts
+- [x] Service layouts
+- [x] Industry layouts
+- [x] Team/profile layouts
+- [x] Testimonial variants
+- [x] FAQ layouts
+- [ ] Tabs layout - only add if native WordPress provides an accessible fit; do not ship a JS tab widget merely to tick a box
+- [x] Pricing/comparison sections
+- [x] Contact/enquiry sections
+- [x] Insight/article features
+- [x] Dynamic Query Loop insight index
+- [x] Header and footer variants
+- [x] Full-page homepage compositions
+- [x] Services page starter
+- [x] Case-study page starter
+- [x] About page starter
+- [x] Commercial-options page starter
 
 ## Visual polish
 - [ ] Final self-hosted typography
 - [ ] Colour and contrast audit
 - [ ] WordPress 7.1 icon-system integration
-- [ ] Technical diagram visual language
-- [ ] Refined interaction states
-- [ ] Responsive composition pass
-- [ ] Editor/front-end parity review
+- [x] Initial technical diagram visual language
+- [x] Refined interaction states for premium patterns
+- [x] Initial responsive composition rules
+- [ ] Full responsive composition pass in a running WordPress environment
+- [ ] Editor/front-end parity review in a running WordPress environment
 
 ## Optional companion functionality
 Persistent business content should be added outside the theme if required, while keeping the theme usable on its own.
@@ -49,10 +58,10 @@ Persistent business content should be added outside the theme if required, while
 ## Quality and release
 - [ ] Theme Check clean pass
 - [ ] WordPress coding-standard checks
-- [ ] Automated JSON and PHP validation
+- [x] Automated JSON and PHP validation workflow present
 - [ ] WordPress Playground smoke test
 - [ ] Keyboard navigation review
-- [ ] Reduced-motion review
+- [ ] Reduced-motion review in browser
 - [ ] Responsive visual review
 - [ ] Performance budget
 - [ ] WooCommerce smoke test when enabled
