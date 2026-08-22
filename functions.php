@@ -31,7 +31,7 @@ function rismor_setup() {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 
-	add_editor_style( 'assets/css/theme.css' );
+	add_editor_style( array( 'assets/css/theme.css', 'assets/css/patterns.css' ) );
 }
 add_action( 'after_setup_theme', 'rismor_setup' );
 
@@ -46,6 +46,13 @@ function rismor_enqueue_assets() {
 		'rismor-theme',
 		get_theme_file_uri( 'assets/css/theme.css' ),
 		array(),
+		$version
+	);
+
+	wp_enqueue_style(
+		'rismor-patterns',
+		get_theme_file_uri( 'assets/css/patterns.css' ),
+		array( 'rismor-theme' ),
 		$version
 	);
 
@@ -69,6 +76,8 @@ function rismor_register_pattern_categories() {
 		'rismor-proof'      => __( 'Rismor: Proof & Trust', 'rismor' ),
 		'rismor-projects'   => __( 'Rismor: Projects', 'rismor' ),
 		'rismor-conversion' => __( 'Rismor: Conversion', 'rismor' ),
+		'rismor-navigation' => __( 'Rismor: Headers & Footers', 'rismor' ),
+		'rismor-pages'      => __( 'Rismor: Full Pages', 'rismor' ),
 	);
 
 	foreach ( $categories as $slug => $label ) {
@@ -111,6 +120,14 @@ function rismor_register_block_styles() {
 		array(
 			'name'  => 'rismor-project',
 			'label' => __( 'Project Feature', 'rismor' ),
+		)
+	);
+
+	register_block_style(
+		'core/details',
+		array(
+			'name'  => 'rismor-faq',
+			'label' => __( 'Rismor FAQ', 'rismor' ),
 		)
 	);
 }
