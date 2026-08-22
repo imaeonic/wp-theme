@@ -40,6 +40,30 @@
 	color: inherit;
 }
 
+.rismor-industry-grid > .wp-block-column {
+	padding-top: var(--wp--preset--spacing--40);
+	border-top: 1px solid rgba(7,20,33,.14);
+}
+
+.rismor-industry-grid > .wp-block-column:hover {
+	border-top-color: var(--wp--preset--color--blue);
+}
+
+.rismor-contact-options {
+	border-top: 1px solid rgba(255,255,255,.18);
+}
+
+.rismor-contact-option {
+	padding: var(--wp--preset--spacing--40) 0;
+	border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.rismor-contact-option a {
+	color: var(--wp--preset--color--white);
+	text-decoration-color: var(--wp--preset--color--cyan);
+	text-underline-offset: .16em;
+}
+
 @media (max-width: 781px) {
 	.rismor-query-editorial .wp-block-post-template {
 		grid-template-columns: 1fr !important;
