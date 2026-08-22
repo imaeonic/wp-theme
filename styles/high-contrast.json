@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "title": "High Contrast",
+  "styles": {
+    "color": {
+      "background": "#FFFFFF",
+      "text": "#000000"
+    },
+    "elements": {
+      "heading": { "color": { "text": "#000000" } },
+      "link": {
+        "color": { "text": "#0047B3" },
+        "typography": { "textDecoration": "underline" }
+      },
+      "button": {
+        "border": { "color": "#000000", "width": "2px" },
+        "color": { "background": "#000000", "text": "#FFFFFF" }
+      }
+    }
+  }
+}
