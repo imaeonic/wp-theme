@@ -5,6 +5,8 @@
 :root {
 	--rismor-transition: 220ms cubic-bezier(.2,.7,.2,1);
 	--rismor-hairline: color-mix(in srgb, currentColor 14%, transparent);
+	--rismor-grid: rgba(8, 121, 249, .09);
+	--rismor-grid-strong: rgba(8, 121, 249, .18);
 }
 
 html {
@@ -25,7 +27,8 @@ body {
 	overflow: clip;
 }
 
-.rismor-site-header {
+.rismor-site-header,
+.rismor-header-variant {
 	position: relative;
 	z-index: 100;
 	transition: background-color var(--rismor-transition), box-shadow var(--rismor-transition);
@@ -99,6 +102,411 @@ body {
 .rismor-project-link:hover {
 	text-decoration: underline;
 	text-underline-offset: .25em;
+}
+
+/* Project-first hero */
+.rismor-hero-project-copy {
+	gap: var(--wp--preset--spacing--40);
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.rismor-hero-project-copy > p {
+	max-width: 52rem;
+}
+
+.rismor-project-canvas,
+.rismor-case-hero-media,
+.rismor-profile-media,
+.rismor-insight-canvas {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(7,20,33,.08);
+	background-color: var(--wp--preset--color--mist);
+	background-image:
+		linear-gradient(var(--rismor-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--rismor-grid) 1px, transparent 1px),
+		radial-gradient(circle at 76% 28%, rgba(0,189,235,.16), transparent 30%),
+		radial-gradient(circle at 28% 74%, rgba(8,121,249,.10), transparent 28%);
+	background-size: 32px 32px, 32px 32px, auto, auto;
+}
+
+.rismor-project-canvas::before,
+.rismor-case-hero-media::before {
+	content: "";
+	position: absolute;
+	width: min(42vw, 520px);
+	aspect-ratio: 1;
+	right: 8%;
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+	border: 1px solid var(--rismor-grid-strong);
+	box-shadow:
+		0 0 0 42px rgba(8,121,249,.035),
+		0 0 0 84px rgba(8,121,249,.025),
+		inset 0 0 80px rgba(0,189,235,.08);
+}
+
+.rismor-project-canvas-label {
+	position: absolute;
+	left: clamp(1.25rem, 4vw, 4rem);
+	bottom: clamp(1.25rem, 4vw, 4rem);
+	max-width: 34rem;
+	padding: clamp(1.5rem, 3vw, 2.75rem);
+	box-shadow: var(--wp--preset--shadow--soft);
+	border: 1px solid rgba(7,20,33,.08);
+}
+
+/* Technical map hero */
+.rismor-system-map {
+	position: relative;
+	min-height: 560px;
+	isolation: isolate;
+	border: 1px solid rgba(7,20,33,.08);
+	background:
+		linear-gradient(var(--rismor-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--rismor-grid) 1px, transparent 1px),
+		radial-gradient(circle at center, rgba(0,189,235,.12), transparent 46%);
+	background-size: 34px 34px, 34px 34px, auto;
+}
+
+.rismor-system-map::before,
+.rismor-system-map::after {
+	content: "";
+	position: absolute;
+	inset: 50% auto auto 50%;
+	width: 72%;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--wp--preset--color--cyan), transparent);
+	transform-origin: center;
+	z-index: -1;
+}
+
+.rismor-system-map::before { transform: translate(-50%,-50%) rotate(26deg); }
+.rismor-system-map::after { transform: translate(-50%,-50%) rotate(-26deg); }
+
+.rismor-map-core {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: min(68%, 300px);
+	padding: 2rem;
+	background: rgba(255,255,255,.94);
+	border: 1px solid rgba(8,121,249,.22);
+	box-shadow: var(--wp--preset--shadow--lift);
+}
+
+.rismor-map-node {
+	position: absolute;
+	margin: 0;
+	padding: .8rem 1rem;
+	background: var(--wp--preset--color--white);
+	border: 1px solid rgba(7,20,33,.12);
+	font-size: var(--wp--preset--font-size--sm);
+	font-weight: 650;
+	box-shadow: 0 10px 35px rgba(7,20,33,.08);
+}
+
+.rismor-map-node-a { left: 8%; top: 13%; }
+.rismor-map-node-b { right: 8%; top: 18%; }
+.rismor-map-node-c { left: 12%; bottom: 14%; }
+.rismor-map-node-d { right: 9%; bottom: 11%; }
+
+.rismor-annotation-rail {
+	gap: 1rem;
+	padding-top: var(--wp--preset--spacing--30);
+	border-top: 1px solid rgba(7,20,33,.1);
+}
+
+/* Proof ledger */
+.rismor-ledger-rows {
+	border-top: 1px solid rgba(7,20,33,.14);
+}
+
+.rismor-ledger-row {
+	display: grid !important;
+	grid-template-columns: minmax(12rem, 1.2fr) .8fr 1.3fr;
+	gap: var(--wp--preset--spacing--40);
+	align-items: center;
+	padding: 1.5rem 0;
+	border-bottom: 1px solid rgba(7,20,33,.14);
+}
+
+.rismor-ledger-row > * { margin: 0; }
+.rismor-ledger-row:hover { background: linear-gradient(90deg, rgba(8,121,249,.035), transparent); }
+
+/* Project galleries */
+.rismor-project-cover {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(255,255,255,.16);
+	background:
+		radial-gradient(circle at 80% 20%, rgba(0,189,235,.22), transparent 28%),
+		linear-gradient(145deg, #10243A, #071421);
+}
+
+.rismor-project-cover::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+	background-size: 40px 40px;
+	transition: transform 900ms cubic-bezier(.2,.7,.2,1), opacity 500ms ease;
+	opacity: .72;
+}
+
+.rismor-project-cover:hover::after { transform: scale(1.06) rotate(.4deg); opacity: 1; }
+
+.rismor-cover-copy {
+	position: absolute;
+	z-index: 2;
+	left: clamp(1.5rem, 4vw, 3.5rem);
+	right: clamp(1.5rem, 4vw, 3.5rem);
+	bottom: clamp(1.5rem, 4vw, 3.5rem);
+	max-width: 42rem;
+}
+
+.rismor-cover-copy a { color: var(--wp--preset--color--white); }
+
+/* Architecture flow */
+.rismor-flow-diagram {
+	position: relative;
+	border-left: 1px solid rgba(8,121,249,.28);
+}
+
+.rismor-flow-step {
+	position: relative;
+	gap: var(--wp--preset--spacing--40);
+	padding: 0 0 var(--wp--preset--spacing--50) var(--wp--preset--spacing--50);
+}
+
+.rismor-flow-step::before {
+	content: "";
+	position: absolute;
+	left: -5px;
+	top: .62rem;
+	width: 9px;
+	height: 9px;
+	background: var(--wp--preset--color--cyan);
+	box-shadow: 0 0 0 7px rgba(0,189,235,.12);
+}
+
+.rismor-flow-step:last-child { padding-bottom: 0; }
+.rismor-flow-index { min-width: 2.5rem; color: var(--wp--preset--color--blue); font-weight: 750; }
+
+/* Metrics */
+.rismor-metric-value {
+	margin: 0;
+	font-size: clamp(4rem, 8vw, 8rem);
+	font-weight: 650;
+	letter-spacing: -.06em;
+	line-height: .9;
+}
+
+.rismor-metric-grid > .wp-block-column {
+	padding-top: var(--wp--preset--spacing--40);
+	border-top: 1px solid rgba(255,255,255,.2);
+}
+
+/* Process */
+.rismor-process-rail { position: relative; }
+.rismor-process-rail::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 1px;
+	background: linear-gradient(90deg, var(--wp--preset--color--blue), rgba(7,20,33,.14));
+}
+
+.rismor-process-step {
+	position: relative;
+	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) 0 0;
+}
+
+.rismor-process-step::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 9px;
+	height: 9px;
+	background: var(--wp--preset--color--white);
+	border: 2px solid var(--wp--preset--color--blue);
+}
+
+.rismor-process-number { font-weight: 750; }
+
+/* Editorial services */
+.rismor-service-list { border-top: 1px solid rgba(7,20,33,.14); }
+.rismor-service-row {
+	display: grid !important;
+	grid-template-columns: 4rem minmax(16rem, 1.1fr) minmax(18rem, 1fr) auto;
+	gap: var(--wp--preset--spacing--40);
+	align-items: center;
+	padding: 1.75rem 0;
+	border-bottom: 1px solid rgba(7,20,33,.14);
+	transition: padding var(--rismor-transition), background var(--rismor-transition);
+}
+
+.rismor-service-row > * { margin: 0; }
+.rismor-service-row:hover { padding-left: 1rem; padding-right: 1rem; background: var(--wp--preset--color--mist); }
+.rismor-service-index { font-weight: 750; }
+
+/* Testimonials */
+.rismor-quote-mark {
+	margin: 0;
+	font-size: 7rem;
+	font-weight: 700;
+	line-height: .6;
+}
+
+.rismor-large-quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.rismor-large-quote p { line-height: 1.12; letter-spacing: -.035em; }
+.rismor-testimonial-context { padding-top: var(--wp--preset--spacing--30); border-top: 1px solid rgba(7,20,33,.15); }
+
+/* Insights */
+.rismor-insight-canvas {
+	background-image:
+		linear-gradient(var(--rismor-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--rismor-grid) 1px, transparent 1px),
+		radial-gradient(circle at 76% 22%, rgba(0,189,235,.20), transparent 30%);
+	background-size: 36px 36px, 36px 36px, auto;
+}
+
+.rismor-insight-copy {
+	position: absolute;
+	left: clamp(1.5rem, 4vw, 3.5rem);
+	right: clamp(1.5rem, 4vw, 3.5rem);
+	bottom: clamp(1.5rem, 4vw, 3.5rem);
+	max-width: 44rem;
+}
+
+.rismor-insight-stack { border-top: 1px solid rgba(7,20,33,.14); }
+.rismor-insight-item { padding: var(--wp--preset--spacing--40) 0; border-bottom: 1px solid rgba(7,20,33,.14); }
+
+/* FAQ and details */
+.rismor-faq-list .wp-block-details,
+.is-style-rismor-faq {
+	margin: 0;
+	padding: 1.4rem 0;
+	border-top: 1px solid rgba(7,20,33,.14);
+}
+
+.rismor-faq-list .wp-block-details:last-child { border-bottom: 1px solid rgba(7,20,33,.14); }
+.rismor-faq-list summary,
+.is-style-rismor-faq summary {
+	cursor: pointer;
+	font-size: var(--wp--preset--font-size--xl);
+	font-weight: 650;
+	letter-spacing: -.02em;
+}
+
+.rismor-faq-list details[open] summary,
+.is-style-rismor-faq[open] summary { color: var(--wp--preset--color--blue); }
+.rismor-contact-rail { position: sticky; top: 8rem; }
+
+/* Case studies */
+.rismor-case-meta > .wp-block-column {
+	padding-top: var(--wp--preset--spacing--30);
+	border-top: 1px solid rgba(7,20,33,.14);
+}
+
+.rismor-tech-note { border-left: 3px solid var(--wp--preset--color--cyan); }
+.rismor-case-narrative > .wp-block-columns + .wp-block-columns { margin-top: 0; }
+
+/* Team */
+.rismor-profile-media::after {
+	content: "";
+	position: absolute;
+	inset: 10%;
+	border: 1px solid rgba(8,121,249,.18);
+	transform: rotate(-4deg);
+}
+
+.rismor-team-facts { gap: var(--wp--preset--spacing--60); margin-top: var(--wp--preset--spacing--40); }
+.rismor-team-facts > p { min-width: 10rem; padding-top: var(--wp--preset--spacing--30); border-top: 1px solid rgba(7,20,33,.14); }
+
+/* Pricing/comparison */
+.rismor-comparison-table table { border-collapse: collapse; }
+.rismor-comparison-table :is(th,td) { padding: 1.2rem 1rem; border: 0; border-bottom: 1px solid rgba(7,20,33,.14); text-align: left; }
+.rismor-comparison-table thead th { font-size: var(--wp--preset--font-size--xl); font-weight: 650; border-top: 2px solid var(--wp--preset--color--ink); }
+.rismor-comparison-table tbody tr:hover { background: var(--wp--preset--color--mist); }
+
+/* Header/footer variants */
+.rismor-header-minimal { border-bottom: 1px solid rgba(7,20,33,.08); }
+.rismor-footer-editorial a { color: inherit; }
+.rismor-footer-bottom { border-top: 1px solid rgba(255,255,255,.14); }
+
+@media (max-width: 1100px) {
+	.rismor-ledger-row,
+	.rismor-service-row {
+		grid-template-columns: 4rem 1fr;
+	}
+
+	.rismor-ledger-row > :nth-child(n+3),
+	.rismor-service-row > :nth-child(n+3) {
+		grid-column: 2;
+	}
+
+	.rismor-process-rail {
+		flex-wrap: wrap !important;
+	}
+
+	.rismor-process-step {
+		flex-basis: 33.333% !important;
+	}
+}
+
+@media (max-width: 781px) {
+	.rismor-project-canvas,
+	.rismor-case-hero-media,
+	.rismor-system-map { min-height: 440px !important; }
+
+	.rismor-project-canvas::before,
+	.rismor-case-hero-media::before { width: 58vw; right: -8%; }
+
+	.rismor-project-canvas-label { right: 1.25rem; max-width: none; }
+
+	.rismor-map-core { width: 62%; }
+	.rismor-map-node { padding: .6rem .75rem; font-size: .75rem; }
+	.rismor-map-node-a { left: 3%; top: 8%; }
+	.rismor-map-node-b { right: 3%; top: 12%; }
+	.rismor-map-node-c { left: 4%; bottom: 8%; }
+	.rismor-map-node-d { right: 3%; bottom: 7%; }
+
+	.rismor-project-pair .wp-block-column { padding-top: 0 !important; }
+	.rismor-project-cover { min-height: 420px !important; }
+
+	.rismor-process-rail::before { display: none; }
+	.rismor-process-step {
+		flex-basis: 100% !important;
+		padding: var(--wp--preset--spacing--40) 0;
+		border-top: 1px solid rgba(7,20,33,.14);
+	}
+	.rismor-process-step::before { display: none; }
+
+	.rismor-contact-rail { position: static; }
+	.rismor-header-minimal > .wp-block-group { flex-wrap: wrap !important; }
+}
+
+@media (max-width: 560px) {
+	.rismor-ledger-row,
+	.rismor-service-row { grid-template-columns: 1fr; gap: .8rem; }
+	.rismor-ledger-row > :nth-child(n+3),
+	.rismor-service-row > :nth-child(n+3) { grid-column: 1; }
+	.rismor-ledger-row > *, .rismor-service-row > * { width: auto; }
+	.rismor-service-row:hover { padding-left: 0; padding-right: 0; background: transparent; }
+	.rismor-project-canvas-label { left: .75rem; right: .75rem; bottom: .75rem; }
+	.rismor-map-node { max-width: 7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
