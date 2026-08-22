@@ -1,0 +1,116 @@
+/* Rismor presentation layer.
+ * Keep layout fundamentals in theme.json and native block controls wherever possible.
+ */
+
+:root {
+	--rismor-transition: 220ms cubic-bezier(.2,.7,.2,1);
+	--rismor-hairline: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+:where(a, button, input, textarea, select, summary):focus-visible {
+	outline: 3px solid var(--wp--preset--color--cyan);
+	outline-offset: 4px;
+}
+
+.wp-site-blocks {
+	overflow: clip;
+}
+
+.rismor-site-header {
+	position: relative;
+	z-index: 100;
+	transition: background-color var(--rismor-transition), box-shadow var(--rismor-transition);
+}
+
+.rismor-site-header.is-scrolled {
+	background: color-mix(in srgb, var(--wp--preset--color--white) 92%, transparent);
+	box-shadow: 0 1px 0 rgba(7, 20, 33, .08);
+	backdrop-filter: blur(18px);
+}
+
+.is-style-rismor-surface {
+	background: var(--wp--preset--color--mist);
+	border: 1px solid rgba(7, 20, 33, .08);
+}
+
+.is-style-rismor-dark {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--white);
+}
+
+.is-style-rismor-dark :where(h1,h2,h3,h4,h5,h6) {
+	color: var(--wp--preset--color--white);
+}
+
+.is-style-rismor-arrow .wp-block-button__link::after {
+	content: " →";
+	transition: transform var(--rismor-transition);
+	display: inline-block;
+}
+
+.is-style-rismor-arrow .wp-block-button__link:hover::after {
+	transform: translateX(.25rem);
+}
+
+.is-style-rismor-project img {
+	box-shadow: var(--wp--preset--shadow--soft);
+}
+
+.rismor-rule {
+	border-top: 1px solid rgba(7, 20, 33, .12);
+}
+
+.rismor-eyebrow {
+	font-size: var(--wp--preset--font-size--xs);
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+}
+
+.rismor-reveal {
+	opacity: 1;
+	transform: none;
+}
+
+.js .rismor-reveal {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+
+.js .rismor-reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+.rismor-project-link {
+	text-decoration: none;
+}
+
+.rismor-project-link:hover {
+	text-decoration: underline;
+	text-underline-offset: .25em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	*, *::before, *::after {
+		scroll-behavior: auto !important;
+		transition-duration: .01ms !important;
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+	.js .rismor-reveal {
+		opacity: 1;
+		transform: none;
+	}
+}
