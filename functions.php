@@ -69,6 +69,8 @@ function rismor_register_pattern_categories() {
 		'rismor-proof'      => __( 'Rismor: Proof & Trust', 'rismor' ),
 		'rismor-projects'   => __( 'Rismor: Projects', 'rismor' ),
 		'rismor-conversion' => __( 'Rismor: Conversion', 'rismor' ),
+		'rismor-navigation' => __( 'Rismor: Headers & Footers', 'rismor' ),
+		'rismor-pages'      => __( 'Rismor: Full Pages', 'rismor' ),
 	);
 
 	foreach ( $categories as $slug => $label ) {
@@ -111,6 +113,14 @@ function rismor_register_block_styles() {
 		array(
 			'name'  => 'rismor-project',
 			'label' => __( 'Project Feature', 'rismor' ),
+		)
+	);
+
+	register_block_style(
+		'core/details',
+		array(
+			'name'  => 'rismor-faq',
+			'label' => __( 'Rismor FAQ', 'rismor' ),
 		)
 	);
 }
