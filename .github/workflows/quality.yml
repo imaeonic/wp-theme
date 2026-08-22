@@ -1,0 +1,32 @@
+name: Theme quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required block-theme files
+        run: |
+          test -f style.css
+          test -f readme.txt
+          test -f theme.json
+          test -f templates/index.html
+
+      - name: Validate PHP syntax
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate JSON
+        run: |
+          python3 -m json.tool theme.json >/dev/null
+          for file in styles/*.json; do python3 -m json.tool "$file" >/dev/null; done
+
+      - name: Guard against accidental external runtime assets
+        run: |
+          ! grep -RIE --exclude-dir=.git --exclude='*.md' --exclude='readme.txt' '(fonts\.googleapis\.com|cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)' .
